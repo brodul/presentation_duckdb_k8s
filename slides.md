@@ -52,7 +52,7 @@ kubectl get nodes -o json > nodes.json
     "kind": "Node",
     "metadata": {
         "annotations": {
-            "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+            "volumes.kubernetes.io/controller-...
         },
         "creationTimestamp": "2025-03-22T20:10:41Z",
         "labels": {
@@ -69,17 +69,11 @@ kubectl get nodes -o json > nodes.json
     "metadata": {
         "labels": {
             "app.kubernetes.io/instance": "my-release",
-            "app.kubernetes.io/managed-by": "Helm",
-            "app.kubernetes.io/name": "nginx",
-            "app.kubernetes.io/version": "1.27.4",
             "helm.sh/chart": "nginx-19.1.0",
-            "pod-template-hash": "756589d594"
         },
         "name": "my-release-nginx-756589d594-qtrfp",
         "namespace": "default",
         "nodeName": "node01",
-        "preemptionPolicy": "PreemptLowerPriority",
-        "priority": 0,
 ```
 ---
 
