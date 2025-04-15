@@ -211,10 +211,10 @@ D SELECT * FROM pods;
 │    varchar    │  varchar   │ varchar  │
 ├───────────────┼────────────┼──────────┤
 │ web-server-1  │ production │ node-a1  │
-│ api-service-1 │ production │ node-b1  │
+│ api-service-1 │ production │ node-a1  │
 │ db-1          │ database   │ node-b1  │
 │ cache-1       │ cache      │ node-b1  │
-│ job-runner-1  │ batch-jobs │ node-a1  │
+│ job-runner-1  │ batch-jobs │ node-b1  │
 └───────────────┴────────────┴──────────┘
 ```
 ---
@@ -252,34 +252,16 @@ JOIN
 │    varchar    │  varchar   │ varchar  │    varchar    │
 ├───────────────┼────────────┼──────────┼───────────────┤
 │ web-server-1  │ production │ node-a1  │ us-central1-a │
-│ api-service-1 │ production │ node-b1  │ us-central1-b │
+│ api-service-1 │ production │ node-a1  │ us-central1-a │
 │ db-1          │ database   │ node-b1  │ us-central1-b │
 │ cache-1       │ cache      │ node-b1  │ us-central1-b │
-│ job-runner-1  │ batch-jobs │ node-a1  │ us-central1-a │
+│ job-runner-1  │ batch-jobs │ node-b1  │ us-central1-b │
 └───────────────┴────────────┴──────────┴───────────────┘
 ```
 ---
-## How do we answer complex questions? 
-
-- How many STS pods are in an AZ (AWS) or a Zone (GCP)?
-- Can we delete the node without disrupting customer in namespace `duckinc`
-
----
-```
-┌───────────────┬────────────┬──────────┬───────────────┐
-│    podName    │ namespace  │ nodeName │      az       │
-│    varchar    │  varchar   │ varchar  │    varchar    │
-├───────────────┼────────────┼──────────┼───────────────┤
-│ web-server-1  │ production │ node-a1  │ us-central1-a │
-│ api-service-1 │ production │ node-b1  │ us-central1-b │
-│ db-1          │ database   │ node-b1  │ us-central1-b │
-│ cache-1       │ cache      │ node-b1  │ us-central1-b │
-│ job-runner-1  │ batch-jobs │ node-a1  │ us-central1-a │
-└───────────────┴────────────┴──────────┴───────────────┘
-```
----
-
-#### All of this will persist in your file `my.db`
+- Join PVs, PVCs and Pods
+- You can create tables from CSV, JSON, XML ...  
+- All the created tables will persist in your file `my.db`
 ---
 
 <img  alt="image" src="https://github.com/user-attachments/assets/8937adcc-e072-47db-9104-907ce8ef1b02" />
