@@ -21,8 +21,8 @@ the objects/manifest from/to the state saved somewhere
 
 ## How do we answer complex questions? 
 
-- How many nodes are in an AZ (AWS) or Zones (GCP)?
-- Which nodes has no pods that are in the `fizbuz` namespace?
+- How many pods are in an AZ (AWS) or a Zone (GCP)?
+- Can we delete the node without disrupting customer in namespace `duckinc`
 
 ---
 
