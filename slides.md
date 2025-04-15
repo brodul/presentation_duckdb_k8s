@@ -90,8 +90,6 @@ kubectl get nodes -o json > nodes.json
 
 ## Step 2 - Flatten the data 🔨
 
-list of simple object ( values are not objects)
-
 ```shell
 jq '
   .items
