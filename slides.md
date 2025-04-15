@@ -48,6 +48,7 @@ kubectl get nodes -o json > nodes.json
 ---
 #### nodes.json
 ```json
+{ items: [
 {
     "apiVersion": "v1",
     "kind": "Node",
@@ -62,6 +63,7 @@ kubectl get nodes -o json > nodes.json
 ---
 #### pods.json
 ```json
+{ items: [
 {
     "apiVersion": "v1",
     "kind": "Pod",
