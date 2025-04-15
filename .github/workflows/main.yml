@@ -1,0 +1,33 @@
+name: Deploy Reveal-md Slides to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # or 'master', depending on your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # or your preferred version
+
+      - name: Install reveal-md
+        run: npm install -g reveal-md
+
+      - name: Build static slides
+        run: |
+          mkdir public
+          reveal-md slides.md --static public
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
