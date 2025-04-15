@@ -81,10 +81,25 @@ kubectl get nodes -o json > nodes.json
 list of simple object ( values are not objects)
 
 ```shell
-jq '.items | map( {podName: .metadata.name, namespace: .metadata.namespace, nodeName: .spec.nodeName } )' < pods.json > flat_pods.json
-jq '.items | map( {az: .metadata.labels."topology.kubernetes.io/zone", nodeName: .metadata.name} )' < nodes.json > flat_nodes.json
+jq '
+  .items
+  | map({
+      podName: .metadata.name,
+      namespace: .metadata.namespace,
+      nodeName: .spec.nodeName
+    })
+' < pods.json > flat_pods.json
 ```
-
+---
+```json
+jq '
+  .items
+  | map({
+      az: .metadata.labels."topology.kubernetes.io/zone",
+      nodeName: .metadata.name
+    })
+' < nodes.json > flat_nodes.json
+```
 ---
 
 ## Step 3 - Create a table
