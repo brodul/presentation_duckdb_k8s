@@ -48,33 +48,41 @@ kubectl get nodes -o json > nodes.json
 ---
 #### nodes.json
 ```json
-{ items: [
 {
-    "apiVersion": "v1",
-    "kind": "Node",
-    "metadata": {
-        "creationTimestamp": "2025-03-22T20:10:41Z",
+  "apiVersion": "v1",
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-a1",
         "labels": {
-            "topology.kubernetes.io/zone": "us-central1-a",
-            "kubernetes.io/os": "linux"
-        },
-        "name": "node01",
+          "topology.kubernetes.io/zone": "us-central1-a"
+        }
+      }
+    },
 ```
 ---
 #### pods.json
 ```json
-{ items: [
 {
-    "apiVersion": "v1",
-    "kind": "Pod",
-    "metadata": {
-        "labels": {
-            "app.kubernetes.io/instance": "my-release",
-            "helm.sh/chart": "nginx-19.1.0",
-        },
-        "name": "my-release-nginx-756589d594-qtrfp",
-        "namespace": "default",
-        "nodeName": "node01",
+  "apiVersion": "v1",
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "web-server-1",
+        "namespace": "production"
+      },
+      "spec": {
+        "nodeName": "node-a1"
+      },
+      "status": {
+        "phase": "Running"
+      }
 ```
 ---
 
@@ -103,6 +111,35 @@ jq '
 ' < nodes.json > flat_nodes.json
 ```
 ---
+#### flat_nodes.json
+```json
+[
+  {
+    "az": "us-central1-a",
+    "nodeName": "node-a1"
+  },
+  {
+    "az": "us-central1-b",
+    "nodeName": "node-b1"
+  }
+]
+```
+---
+#### flat_pods.json
+```json
+[
+  {
+    "podName": "web-server-1",
+    "namespace": "production",
+    "nodeName": "node-a1"
+  },
+  {
+    "podName": "api-service-1",
+    "namespace": "production",
+    "nodeName": "node-b1"
+  },
+```
+---
 
 ## Step 3 - Create a table
 
@@ -119,6 +156,27 @@ CREATE TABLE nodes AS
 SELECT * FROM read_json_auto('flat_nodes.json');
 ```
 ---
+```
+D SELECT * FROM pods;
+┌───────────────┬────────────┬──────────┐
+│    podName    │ namespace  │ nodeName │
+│    varchar    │  varchar   │ varchar  │
+├───────────────┼────────────┼──────────┤
+│ web-server-1  │ production │ node-a1  │
+│ api-service-1 │ production │ node-b1  │
+│ db-1          │ database   │ node-b1  │
+│ cache-1       │ cache      │ node-b1  │
+│ job-runner-1  │ batch-jobs │ node-a1  │
+└───────────────┴────────────┴──────────┘
+D SELECT * FROM nodes;
+┌───────────────┬──────────┐
+│      az       │ nodeName │
+│    varchar    │ varchar  │
+├───────────────┼──────────┤
+│ us-central1-a │ node-a1  │
+│ us-central1-b │ node-b1  │
+└───────────────┴──────────┘
+```
 
 ## Step 4 - Join and query tables for the answer 🧪
 
