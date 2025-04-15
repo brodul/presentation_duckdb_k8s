@@ -221,5 +221,5 @@ JOIN
 #### All of this will persist in your file `my.db`
 ---
 
-Thats it ... 
+<img  alt="image" src="https://github.com/user-attachments/assets/8937adcc-e072-47db-9104-907ce8ef1b02" />
 
