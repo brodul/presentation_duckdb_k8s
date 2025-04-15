@@ -38,7 +38,7 @@
         "namespace": "database"
       },
       "spec": {
-        "nodeName": "node-c1"
+        "nodeName": "node-b1"
       },
       "status": {
         "phase": "Pending"
@@ -52,7 +52,7 @@
         "namespace": "cache"
       },
       "spec": {
-        "nodeName": "node-a2"
+        "nodeName": "node-b1"
       },
       "status": {
         "phase": "Running"
@@ -66,7 +66,7 @@
         "namespace": "batch-jobs"
       },
       "spec": {
-        "nodeName": "node-b2"
+        "nodeName": "node-a1"
       },
       "status": {
         "phase": "Succeeded"
