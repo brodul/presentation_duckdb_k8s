@@ -183,5 +183,30 @@ D SELECT * FROM nodes;
 ... with ChatGpt 
 
 ---
+```sql
+SELECT 
+    p.podName,
+    p.namespace,
+    p.nodeName,
+    n.az
+FROM 
+    pods p
+JOIN 
+    nodes n ON p.nodeName = n.nodeName;
+```
+---
+┌───────────────┬────────────┬──────────┬───────────────┐
+│    podName    │ namespace  │ nodeName │      az       │
+│    varchar    │  varchar   │ varchar  │    varchar    │
+├───────────────┼────────────┼──────────┼───────────────┤
+│ web-server-1  │ production │ node-a1  │ us-central1-a │
+│ api-service-1 │ production │ node-b1  │ us-central1-b │
+│ db-1          │ database   │ node-b1  │ us-central1-b │
+│ cache-1       │ cache      │ node-b1  │ us-central1-b │
+│ job-runner-1  │ batch-jobs │ node-a1  │ us-central1-a │
+└───────────────┴────────────┴──────────┴───────────────┘
+---
+All of this will persist in your file `my.db`
+---
 
 Thats it ... 
