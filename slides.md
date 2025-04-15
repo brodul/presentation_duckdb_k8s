@@ -260,7 +260,7 @@ JOIN
 ```
 ---
 - Join PVs, PVCs and Pods
-- You can create tables from CSV, JSON, XML ...  
+- You can create tables from CSV, JSON ...  
 - All the created tables will persist in your file `my.db`
 ---
 
