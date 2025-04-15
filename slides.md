@@ -32,7 +32,7 @@ with an HTTP API call
 - RDBMS -> Relational Database Management System
 - OLAP -> Online analytical processing
 
-```
+---
 
 ## Simple 4 step solution 📓
 
