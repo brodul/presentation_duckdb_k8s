@@ -90,6 +90,26 @@ kubectl get nodes -o json > nodes.json
 
 ## Step 2 - Flatten the data 🔨
 
+---
+#### pods.json
+```json
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "web-server-1",
+        "namespace": "production"
+      },
+      "spec": {
+        "nodeName": "node-a1"
+      },
+```
+---
+
 ```shell
 jq '
   .items
@@ -100,30 +120,7 @@ jq '
     })
 ' < pods.json > flat_pods.json
 ```
----
-```json
-jq '
-  .items
-  | map({
-      az: .metadata.labels."topology.kubernetes.io/zone",
-      nodeName: .metadata.name
-    })
-' < nodes.json > flat_nodes.json
-```
----
-#### flat_nodes.json
-```json
-[
-  {
-    "az": "us-central1-a",
-    "nodeName": "node-a1"
-  },
-  {
-    "az": "us-central1-b",
-    "nodeName": "node-b1"
-  }
-]
-```
+
 ---
 #### flat_pods.json
 ```json
@@ -140,6 +137,53 @@ jq '
   },
 ```
 ---
+
+#### nodes.json
+```json
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-a1",
+        "labels": {
+          "topology.kubernetes.io/zone": "us-central1-a"
+        }
+      }
+    },
+```
+
+---
+```json
+jq '
+  .items
+  | map({
+      az: .metadata.labels."topology.kubernetes.io/zone",
+      nodeName: .metadata.name
+    })
+' < nodes.json > flat_nodes.json
+```
+
+---
+#### flat_nodes.json
+```json
+[
+  {
+    "az": "us-central1-a",
+    "nodeName": "node-a1"
+  },
+  {
+    "az": "us-central1-b",
+    "nodeName": "node-b1"
+  }
+]
+```
+
+---
+
 
 ## Step 3 - Create a table
 
