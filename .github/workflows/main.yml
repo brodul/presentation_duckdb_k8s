@@ -6,6 +6,10 @@ on:
       - main  # or 'master', depending on your default branch
   workflow_dispatch:
 
+permissions:  # Add this section to define permissions for the GITHUB_TOKEN
+  id-token: write
+  contents: read
+
 jobs:
   # Build job
   build:
