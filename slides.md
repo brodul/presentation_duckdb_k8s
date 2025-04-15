@@ -106,8 +106,9 @@ jq '
 
 like in a releational database
 
-`duckdb my.db`
-
+```shell
+duckdb my.db
+```
 ---
 ```sql
 CREATE TABLE pods AS
