@@ -85,9 +85,6 @@ kubectl get nodes -o json > nodes.json
       "spec": {
         "nodeName": "node-a1"
       },
-      "status": {
-        "phase": "Running"
-      }
 ```
 ---
 
