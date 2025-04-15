@@ -35,7 +35,7 @@ Where you Create, Read, Update and Delete the objects/manifest from/to the state
 
 # Simple 4 step solution 📓
 
---- 
+---
 
 # Step 1 - Get the data
 
@@ -43,7 +43,7 @@ list of objects (values can be objects)
 
 ---
 
-<img width="808" alt="image" src="https://github.com/user-attachments/assets/70711567-fc53-4146-9da2-34a9e77c4d3e" />
+<img width="70vw" alt="image" src="https://github.com/user-attachments/assets/70711567-fc53-4146-9da2-34a9e77c4d3e" />
 
 ---
 
@@ -51,11 +51,14 @@ list of objects (values can be objects)
 
 list of simple object ( values are not objects)
 
-`jq '.items | map( {podName: .metadata.name, namespace: .metadata.namespace, nodeName: .spec.nodeName } )' < pods.json`
-`jq '.items | map( {az: .metadata.labels."topology.kubernetes.io/zone", nodeName: .metadata.name} )' < nodes.json`
+```shell
+jq '.items | map( {podName: .metadata.name, namespace: .metadata.namespace, nodeName: .spec.nodeName } )' < pods.json
+jq '.items | map( {az: .metadata.labels."topology.kubernetes.io/zone", nodeName: .metadata.name} )' < nodes.json
+```
+
 ---
 
-# Step 3 - Create a table ⎍
+# Step 3 - Create a table
 
 like in a releational database
 
@@ -76,8 +79,6 @@ SELECT * FROM read_json_auto('flat_nodes.json');
 
 ... with ChatGpt 
 
---- 
+---
 
 Thats it ... 
-
----
