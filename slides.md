@@ -36,7 +36,7 @@ All the data is there
 
 ## Step 1 - Get the data
 
-list of objects (values can be objects)
+`kubectl get pods -A` 
 
 ---
 
@@ -49,7 +49,7 @@ list of objects (values can be objects)
 `YAML` or `json`
 
 ```shell
-kubectl get pods -o json > pods.json
+kubectl get pods -A -o json > pods.json
 kubectl get nodes -o json > nodes.json
 ```
 ---
