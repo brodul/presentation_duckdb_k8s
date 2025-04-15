@@ -7,11 +7,7 @@
       "kind": "Pod",
       "metadata": {
         "name": "web-server-1",
-        "namespace": "production",
-        "labels": {
-          "app": "web",
-          "topology.kubernetes.io/zone": "us-central1-a"
-        }
+        "namespace": "production"
       },
       "spec": {
         "nodeName": "node-a1"
@@ -25,11 +21,7 @@
       "kind": "Pod",
       "metadata": {
         "name": "api-service-1",
-        "namespace": "production",
-        "labels": {
-          "app": "api",
-          "topology.kubernetes.io/zone": "us-central1-b"
-        }
+        "namespace": "production"
       },
       "spec": {
         "nodeName": "node-b1"
@@ -43,11 +35,7 @@
       "kind": "Pod",
       "metadata": {
         "name": "db-1",
-        "namespace": "database",
-        "labels": {
-          "app": "db",
-          "topology.kubernetes.io/zone": "us-central1-c"
-        }
+        "namespace": "database"
       },
       "spec": {
         "nodeName": "node-c1"
@@ -61,11 +49,7 @@
       "kind": "Pod",
       "metadata": {
         "name": "cache-1",
-        "namespace": "cache",
-        "labels": {
-          "app": "cache",
-          "topology.kubernetes.io/zone": "us-central1-a"
-        }
+        "namespace": "cache"
       },
       "spec": {
         "nodeName": "node-a2"
@@ -79,11 +63,7 @@
       "kind": "Pod",
       "metadata": {
         "name": "job-runner-1",
-        "namespace": "batch-jobs",
-        "labels": {
-          "app": "job-runner",
-          "topology.kubernetes.io/zone": "us-central1-b"
-        }
+        "namespace": "batch-jobs"
       },
       "spec": {
         "nodeName": "node-b2"
