@@ -8,14 +8,14 @@
 
 Scheduler with an CRUD API
 
-Where you
+Where you call an HTTP API 
 
-  - Create
-  - Read
-  - Update
-  - Delete
+- Create
+- Read
+- Update
+- Delete
 
-the objects/manifest from/to the state saved somewhere
+All the data is there
 
 ---
 
