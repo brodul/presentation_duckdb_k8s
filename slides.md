@@ -28,6 +28,12 @@ with an HTTP API call
 
 ---
 
+- In process
+- RDBMS -> Relational Database Management System
+- OLAP -> Online analytical processing
+
+```
+
 ## Simple 4 step solution 📓
 
 ---
@@ -187,8 +193,6 @@ jq '
 
 ## Step 3 - Create a table
 
-like in a releational database
-
 ```shell
 duckdb my.db
 ```
@@ -255,6 +259,26 @@ JOIN
 └───────────────┴────────────┴──────────┴───────────────┘
 ```
 ---
+## How do we answer complex questions? 
+
+- How many STS pods are in an AZ (AWS) or a Zone (GCP)?
+- Can we delete the node without disrupting customer in namespace `duckinc`
+
+---
+```
+┌───────────────┬────────────┬──────────┬───────────────┐
+│    podName    │ namespace  │ nodeName │      az       │
+│    varchar    │  varchar   │ varchar  │    varchar    │
+├───────────────┼────────────┼──────────┼───────────────┤
+│ web-server-1  │ production │ node-a1  │ us-central1-a │
+│ api-service-1 │ production │ node-b1  │ us-central1-b │
+│ db-1          │ database   │ node-b1  │ us-central1-b │
+│ cache-1       │ cache      │ node-b1  │ us-central1-b │
+│ job-runner-1  │ batch-jobs │ node-a1  │ us-central1-a │
+└───────────────┴────────────┴──────────┴───────────────┘
+```
+---
+
 #### All of this will persist in your file `my.db`
 ---
 
