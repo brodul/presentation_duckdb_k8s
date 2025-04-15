@@ -46,14 +46,12 @@ kubectl get pods -o json > pods.json
 kubectl get nodes -o json > nodes.json
 ```
 ---
+#### nodes.json
 ```json
 {
     "apiVersion": "v1",
     "kind": "Node",
     "metadata": {
-        "annotations": {
-            "volumes.kubernetes.io/controller-...
-        },
         "creationTimestamp": "2025-03-22T20:10:41Z",
         "labels": {
             "topology.kubernetes.io/zone": "us-central1-a",
@@ -62,6 +60,7 @@ kubectl get nodes -o json > nodes.json
         "name": "node01",
 ```
 ---
+#### pods.json
 ```json
 {
     "apiVersion": "v1",
