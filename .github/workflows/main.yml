@@ -9,6 +9,7 @@ on:
 permissions:  # Add this section to define permissions for the GITHUB_TOKEN
   id-token: write
   contents: read
+  pages: write
 
 jobs:
   # Build job
