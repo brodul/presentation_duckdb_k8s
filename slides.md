@@ -6,16 +6,14 @@
 
 ## What is Kubernetes? ☸
 
-Scheduler with an CRUD API
-
-Where you call an HTTP API 
+Scheduler with an CRUD API ...
 
 - Create
 - Read
 - Update
 - Delete
 
-All the data is there
+with an HTTP API call
 
 ---
 
